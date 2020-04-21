@@ -7,6 +7,12 @@
         The actual rendered columns are set as a property on the row definition" -->
 
   <!-- flightNumber Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> Id </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+
+  <!-- flightNumber Column -->
   <ng-container matColumnDef="flightNumber">
     <th mat-header-cell *matHeaderCellDef> Numero do Voo </th>
     <td mat-cell *matCellDef="let element"> {{element.flightNumber}} </td>
@@ -38,7 +44,7 @@
 
   <!-- toAirport Column -->
   <ng-container matColumnDef="flightDateTime">
-    <th mat-header-cell *matHeaderCellDef> Data/Hora Voo </th>
+    <th class="w-400" mat-header-cell *matHeaderCellDef> Data/Hora Voo </th>
     <td mat-cell *matCellDef="let element"> {{element.flightDateTime}} </td>
   </ng-container>
 

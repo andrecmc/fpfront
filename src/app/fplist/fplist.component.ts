@@ -9,7 +9,7 @@ import { FlightPlan } from 'src/model/FlightPlan';
 })
 export class FplistComponent implements OnInit {
   isLoadingResults = false;
-  displayedColumns: string[] = [ 'flightNumber', 'aircraftType', 'aircraftPrefix', 'fromAirport', 'toAirport', 'flightDateTime', 'acao'];
+  displayedColumns: string[] = [ 'id', 'flightNumber', 'aircraftType', 'aircraftPrefix', 'fromAirport', 'toAirport', 'flightDateTime', 'acao'];
   dataSource: FlightPlan[];
 
   constructor(private _api: ApiService) { }

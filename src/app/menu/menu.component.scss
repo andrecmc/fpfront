@@ -1,5 +1,5 @@
 .sidenav-container {
-  height: 100%;
+
 }
 
 .sidenav {
@@ -10,6 +10,10 @@
   background: inherit;
 }
 
+.mat-toolbar {
+  height: 64px;
+}
+
 .mat-toolbar.mat-primary {
   position: sticky;
   top: 0;
@@ -18,6 +22,7 @@
 .container {
   margin-top: 25px;
   margin-left: 20px;
+  height: calc(100% - 64px);
 }
 
 mat-sidenav {
