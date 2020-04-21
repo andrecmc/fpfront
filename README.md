@@ -1,27 +1,88 @@
-# Fpfront
+# Saipher projeto de teste - Andre Costa
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.1.
+O projeto está estruturado em duas pastas:
+- fpfront - Código do Frontend
+- fpback - Código do Backend
 
-## Development server
+# Informações sobre o Backend
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+O código do backend utiliza dotnet para implementar uma API Rest contendo os seguintes métodos:
 
-## Code scaffolding
+- Create - POST
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Exemplo de chamada utilizando o curl:
 
-## Build
+curl --location --request POST 'https://localhost:5001/api/FlightPlan' \
+--header 'Content-Type: application/json' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "flightNumber":"AZUL3123",
+  "aircraftType":"B737",
+  "aircraftPrefix":"PT-AZU",
+  "fromAirport":"GRU",
+  "toAirport":"BSB",
+  "flightDateTime":"2020-05-14T03:45"
+}'
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+- Update - PUT
 
-## Running unit tests
+Exemplo de chamada utilizando o curl:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+curl --location --request PUT 'https://localhost:5001/api/FlightPlan/1' \
+--header 'Content-Type: application/json' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "flightNumber":"AZUL3123",
+  "aircraftType":"B737",
+  "aircraftPrefix":"PT-AZU",
+  "fromAirport":"GRU",
+  "toAirport":"BSB",
+  "flightDateTime":"2020-05-14T03:45"
+}'
 
-## Running end-to-end tests
+- Delete - DELETE
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Exemplo de chamada utilizando o curl:
 
-## Further help
+curl --location --request DELETE 'https://localhost:5001/api/FlightPlan/2'
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+- Lista - GET
+
+Exemplo de chamada utilizando o curl:
+
+curl --location --request GET 'https://localhost:5001/api/FlightPlan'
+
+- Informação sobre a API - GET - https://localhost:5001/api/FlightPlan/info
+
+Exemplo de chamada utilizando o curl:
+
+curl --location --request GET 'https://localhost:5001/api/FlightPlan/info' \
+--header 'Cookie: ARRAffinity=677ccf51ddbc35769908cc4f1d3bf6727dd496b2b396a5ba3254b729dd1c8513'
+
+Como a idéia era só fazer um teste optei por utilizar a persistencia em memória.
+
+Para iniciar o servidor utilize o seguinte comando:
+
+dotnet run
+
+Abra o seguinte endereço no browser para verificar que o servidor do backend está rodando:
+
+https://localhost:5001/api/FlightPlan/info
+
+Deve ser exibida uma lista com um número de versão e uma data/hora.
+
+
+# Frontend
+
+O código do frontend utiliza angular e comunica com o backend através da API Rest mencionada anteriormente.
+
+Para iniciar o frontend utilize o seguinte comando em uma janela de terminal dentro do diretorio do frontend:
+
+ng serve
+
+Depois disso abra a seguinte pagina:
+
+http://localhost:4200/
+
+Será exibida a página inicial com a lista de planos de voo. Como não existe nada cadastrado é preciso cadastrar alguns planos de voo para poder testar.
+
